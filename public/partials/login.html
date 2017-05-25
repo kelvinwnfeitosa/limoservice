@@ -1,0 +1,27 @@
+<h1 class="text-center">Login</h1>
+
+<div class="alert-danger">{{vm.mensagem}}</div>
+<div class="row">
+    <div class="col-md-offset-4 col-md-4">
+        <form novalidate name="loginForm"
+              data-ng-submit="vm.login()">
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" required id="login" class="form-control"
+                       data-ng-model="vm.usuario.login">
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" required id="senha" class="form-control"
+                       data-ng-model="vm.usuario.senha">
+            </div>
+            <div style="float:right">
+                <input class="btn btn-primary" type="submit" value="Entrar"
+                       data-ng-disabled="loginForm.$invalid">
+                <input class="btn btn-primary" type="reset" value="Limpar"
+                       data-ng-disabled="loginForm.$pristine"
+                       data-ng-click="vm.limpar()">
+            </div>
+        </form>
+    </div>
+</div>
