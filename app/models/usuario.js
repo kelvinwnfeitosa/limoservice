@@ -8,6 +8,10 @@ var schema = mongoose.Schema({
     senha : {
         type     : String,
         required : true
+    },
+    admin : {
+        type    : Boolean,
+        default : false
     }
 });
 

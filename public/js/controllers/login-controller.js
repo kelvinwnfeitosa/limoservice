@@ -9,6 +9,7 @@ angular.module('limoservice')
     vm.login  = login;
     vm.limpar = limpar;
     vm.logout = logout;
+    vm.teste = teste;
 
     function login() {
         $http.post('/autenticar', angular.toJson(vm.usuario))
@@ -21,6 +22,15 @@ angular.module('limoservice')
         });
     };
 
+    function teste() {
+        $http.get('/v1/usuarios')
+            .then(function(usuarios) {
+            console.log(usuarios);
+        }, function(error) {
+            console.log(error);
+        });
+    };
+    
     function limpar() {
         vm.usuario.login = '';
         vm.usuario.senha = '';

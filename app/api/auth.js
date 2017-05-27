@@ -28,6 +28,7 @@ module.exports = function(app) {
 
     api.verificaToken = function(request, response, next) {
         var token = request.headers['x-access-token'];
+        console.log(request.headers);
         if (token) {
             console.log('Verificando Token...');
             jwt.verify(token, app.get('secret'), function(error, decoded) {
@@ -40,6 +41,7 @@ module.exports = function(app) {
                 };
             });
         } else {
+            console.log('Sem token');
             response.sendStatus(401);
         };
     };
