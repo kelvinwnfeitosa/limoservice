@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema({
     login : {
         type     : String,
-        required : true
+        required : true,
+        unique   : true
     },
     senha : {
         type     : String,
@@ -13,6 +14,8 @@ var schema = mongoose.Schema({
         type    : Boolean,
         default : false
     }
+}, {
+    versionKey : false
 });
 
 mongoose.model('Usuario', schema);

@@ -1,5 +1,5 @@
 angular.module('limoservice')
-    .controller('LoginController', function($scope, $http, $location, $window) {
+    .controller('LoginController', function($scope, $state, $http, $window) {
 
     var vm = this;
 
@@ -14,7 +14,7 @@ angular.module('limoservice')
     function login() {
         $http.post('/autenticar', angular.toJson(vm.usuario))
             .then(function() {
-            $location.path('/');
+            $state.go('principal.inicial');
         }, function(error) {
             console.log(error);
             vm.usuario = {};
@@ -40,7 +40,7 @@ angular.module('limoservice')
 
     function logout() {
         delete $window.sessionStorage.token;
-        $location.path('/login');
+        $state.go('login');
     };
 
 });

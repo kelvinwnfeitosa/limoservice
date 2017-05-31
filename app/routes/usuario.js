@@ -5,9 +5,9 @@ module.exports = function(app) {
 //        .get(api.recuperar)
 //        .delete(api.excluir)
 //        .put(api.alterar);
-    
+
     app.route('/v1/usuarios')
-        .get(api.listar);
-//        .post(api.cadastrar);
+        .get(api.listar)
+        .post(api.cadastrar);
 
 };

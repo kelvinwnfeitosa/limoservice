@@ -1,28 +1,48 @@
-angular.module('limoservice', ['ngAnimate', 'ngRoute', 'ngResource'])
-    .config(function($routeProvider, $locationProvider, $httpProvider) {
+angular.module('limoservice', ['ui.router', 'ngRoute'])
+    .config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
 
         $httpProvider.interceptors.push('tokenInterceptor');
         $locationProvider.hashPrefix('');
 
-        $routeProvider.when('/login', {
+        $urlRouterProvider.otherwise('/');
+
+        $stateProvider
+          .state('login', {
+            url          : '/login',
             templateUrl  : 'partials/login.html',
             controller   : 'LoginController',
             controllerAs : 'vm'
-        });
-
-        $routeProvider.when('/', {
-            templateUrl  : 'partials/principal.html',
+        }).state('principal', {
+            url          : '',
+            templateUrl  : 'partials/principal.html'
+        }).state('principal.inicial', {
+            url          : '/',
+            templateUrl  : 'partials/inicial.html',
             controller   : 'LoginController',
-            controllerAs : 'vm',
-            resolve      : {
-                'check'  : function($window, $location) {
-                    if (!$window.sessionStorage.token) {
-                        $location.path('/login');
-                    }
-                }
-            }
+            controllerAs : 'vm'
+        }).state('principal.usuario', {
+            url          : '/usuario',
+            templateUrl  : 'partials/usuario.html',
+            controller   : 'UsuarioController',
+            controllerAs : 'vm'
+        }).state('principal.usuarios', {
+            url          : '/usuarios',
+            templateUrl  : 'partials/usuarios.html',
+            controller   : 'UsuariosController',
+            controllerAs : 'vm'
         });
 
-        $routeProvider.otherwise({redirectTo: '/login'});
-
+    })
+    .run(function($transitions, $window) {
+        $transitions.onSuccess({}, function(trans) {
+            if (!$window.sessionStorage.token) {
+                if (trans.$to().name !== 'login') {
+                    return trans.router.stateService.go('login');
+                };
+            } else {
+                if (trans.$to().name === 'login') {
+                    return trans.router.stateService.go('principal.inicial');
+                };
+            };
+        });
     });

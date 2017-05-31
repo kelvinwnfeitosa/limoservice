@@ -50,7 +50,7 @@ var schema = mongoose.Schema({
     nacionalidade : {
         type     : String,
         required : true
-    }, 
+    },
     telefones : [{
         ddd : {
             type     : Number,
