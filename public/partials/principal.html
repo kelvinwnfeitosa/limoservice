@@ -8,22 +8,22 @@
                 <ul class="nav navbar-nav">
                     <li><a ui-sref=".list">Reservas</a></li>
                     <li><a ui-sref=".list">Clientes</a></li>
-                    <li><a ui-sref=".usuarios">Gestão</a></li>
+                    <li><a ui-sref=".usuario">Gestão</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right"
-                    data-ng-controller="LoginController as loginVm">
-                    <button type="button" class="btn btn-danger navbar-btn"
-                            data-ng-click="loginVm.logout()">Logout</button>
+                <ul class="nav navbar-nav navbar-right" data-ng-controller="LoginController as loginVm">
+                    <button type="button" class="btn btn-danger navbar-btn" data-ng-click="loginVm.logout()">Logout</button>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
 
+<div class="alert alert-success" role="alert" data-ng-if="vm.mensagem">
+  OIOI
+</div>
+
 <section>
     <div ui-view></div>
 </section>
 
-<footer>
-
-</footer>
+<footer></footer>
