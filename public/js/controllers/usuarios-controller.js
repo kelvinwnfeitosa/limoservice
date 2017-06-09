@@ -1,4 +1,4 @@
-angular.module('limoservice')
+angular.module('panorama-limousines')
     .controller('UsuariosController', function($http) {
 
     var vm = this;

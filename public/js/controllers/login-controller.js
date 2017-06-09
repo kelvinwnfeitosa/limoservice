@@ -1,4 +1,4 @@
-angular.module('limoservice')
+angular.module('panorama-limousines')
     .controller('LoginController', function($scope, $state, $http, $window) {
 
     var vm = this;
@@ -30,7 +30,7 @@ angular.module('limoservice')
             console.log(error);
         });
     };
-    
+
     function limpar() {
         vm.usuario.login = '';
         vm.usuario.senha = '';

@@ -1,4 +1,4 @@
-angular.module('limoservice')
+angular.module('panorama-limousines')
     .factory('tokenInterceptor', function($window, $q, $location) {
         var interceptor = {};
 

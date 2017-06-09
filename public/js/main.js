@@ -1,4 +1,4 @@
-angular.module('limoservice', ['ui.router', 'ngRoute'])
+angular.module('panorama-limousines', ['ui.router', 'ngRoute'])
     .config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
 
         $httpProvider.interceptors.push('tokenInterceptor');
